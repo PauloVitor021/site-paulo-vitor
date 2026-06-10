@@ -1,0 +1,14 @@
+# Dependências e build do protótipo React antigo (não usados no site final)
+node_modules/
+dist/
+
+# Arquivos do protótipo React antigo (ficam no PC, não vão pro GitHub)
+src/
+package.json
+package-lock.json
+vite.config.js
+
+# Ferramentas / sistema
+.claude/
+.DS_Store
+Thumbs.db
