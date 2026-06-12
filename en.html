@@ -105,18 +105,18 @@
 
   /* ---------- hero ---------- */
   .hero{position:relative;padding:150px 0 70px;overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;grid-template-areas:"logo photo" "cta photo";column-gap:50px;row-gap:26px;align-items:center}
   .hero-kicker{display:flex;align-items:center;gap:14px;margin-bottom:26px}
   .hero-kicker .rule{height:1px;width:46px;background:var(--gold)}
   .hero h1{font-size:clamp(2.7rem,6vw,4.7rem);margin-bottom:24px}
   .hero h1 em{font-style:italic;color:var(--gold-deep)}
   .hero p.lead{font-size:1.06rem;color:var(--ink-soft);max-width:30em;margin-bottom:34px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-cta{grid-area:cta;align-self:start;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
   .hero-stats{display:flex;gap:38px;margin-top:46px;padding-top:30px;border-top:1px solid var(--line)}
   .hero-stats .n{font-family:var(--display);font-size:2rem;line-height:1;color:var(--ink)}
   .hero-stats .l{font-size:.74rem;letter-spacing:.04em;color:var(--muted);margin-top:7px;text-transform:uppercase}
 
-  .hero-portrait{position:relative}
+  .hero-portrait{grid-area:photo;position:relative}
   .hero-portrait .frame{
     position:relative;z-index:0;border-radius:230px 230px 18px 18px;overflow:hidden;
     box-shadow:0 40px 80px -36px rgba(0,0,0,.55);
@@ -124,15 +124,11 @@
   }
   .hero-portrait .frame img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:top center}
   /* logo image (hero) */
-  .hero-logo-img{display:block;width:100%;max-width:440px;height:auto;margin-bottom:42px}
+  .hero-logo-img{grid-area:logo;align-self:end;display:block;width:100%;max-width:440px;height:auto}
   /* hero photo placeholder (until images/hero.jpg is added) */
   .hero-ph{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:radial-gradient(120% 120% at 50% 0%,rgba(255,255,255,.06),rgba(18,18,18,0)),var(--ink-90);color:var(--gold);text-align:center;padding:24px}
   .hero-ph .mono{font-weight:300;font-size:2.6rem;letter-spacing:.1em}
   .hero-ph small{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,250,.5);line-height:1.6}
-  .hero-portrait::after{
-    content:"";position:absolute;inset:-18px -18px 30px;border:1px solid var(--gold);
-    border-radius:240px 240px 26px 26px;z-index:-1;opacity:.5;
-  }
   .badge{
     position:absolute;z-index:3;left:-26px;bottom:42px;background:var(--paper);
     border:1px solid var(--line);border-radius:16px;padding:16px 20px;
@@ -290,9 +286,12 @@
 
   /* ---------- responsive ---------- */
   @media(max-width:920px){
-    .hero-grid,.sobre-grid,.contato-grid{grid-template-columns:1fr}
+    .sobre-grid,.contato-grid{grid-template-columns:1fr}
+    .hero-grid{grid-template-columns:1fr;grid-template-areas:"logo" "photo" "cta";row-gap:16px;justify-items:center;text-align:center}
+    .hero-logo-img{align-self:auto;max-width:300px;margin:0 auto}
+    .hero-cta{align-self:auto;justify-content:center}
     .proc-grid{grid-template-columns:repeat(2,1fr)}
-    .hero-portrait{max-width:420px;margin:10px auto 0}
+    .hero-portrait{max-width:380px;margin:4px auto 0}
     .sobre-img{max-width:380px;margin:0 auto}
     .nav-links{display:none}
     .menu-btn{display:flex}
@@ -369,25 +368,19 @@
 <section class="hero" id="topo">
   <span class="ghost-word">beauty</span>
   <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <img class="hero-logo-img reveal" src="images/logo.png" alt="Dr. Paulo Vitor Rocha — Facial Harmonization" />
-      <div class="hero-cta reveal d3">
-        <a class="btn btn--gold js-wpp" href="#">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.045z"/></svg>
-          Book via WhatsApp
-        </a>
-        <a class="btn btn--outline" href="#resultados">See results</a>
-      </div>
-    </div>
+    <img class="hero-logo-img reveal" src="images/logo.png" alt="Dr. Paulo Vitor Rocha — Facial Harmonization" />
     <div class="hero-portrait reveal d2">
       <div class="frame">
         <div class="hero-ph"><span class="mono">PV</span><small>Dr. Paulo Vitor's photo<br>save as images/hero.jpg</small></div>
         <img src="images/hero.jpg" alt="Dr. Paulo Vitor" loading="eager" onerror="this.style.display='none'" />
       </div>
-      <div class="badge">
-        <b>Dr. Paulo Vitor</b>
-        <small>CRO-RJ 53790 · Facial Harmonization Specialist</small>
-      </div>
+    </div>
+    <div class="hero-cta reveal d3">
+      <a class="btn btn--gold js-wpp" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.045z"/></svg>
+        Book via WhatsApp
+      </a>
+      <a class="btn btn--outline" href="#resultados">See results</a>
     </div>
   </div>
 </section>
@@ -402,7 +395,7 @@
     </div>
     <div class="sobre-copy">
       <div class="eyebrow reveal">About the specialist</div>
-      <h2 class="reveal d1">Technique, anatomy and <em>refined taste</em> in every detail.</h2>
+      <h2 class="reveal d1">Technique and <em>good sense</em> in every detail.</h2>
       <p class="reveal d2">I believe facial aesthetics is not about transforming faces, but about refining details. My work is to unite technique, planning and an aesthetic eye to create personalized results — respecting proportions, preserving individual features and always pursuing naturalness.</p>
       <p class="reveal d2">Every appointment starts with a detailed assessment — because a beautiful result is born from a personalized treatment plan, not from ready-made formulas.</p>
       <ul class="creds reveal d3">
@@ -434,7 +427,7 @@
     <div class="sec-head reveal">
       <div class="eyebrow on-dark">What we do</div>
       <h2>Procedures to <em>enhance</em> you.</h2>
-      <p>Modern facial harmonization treatments, always with a personalized recommendation after assessment.</p>
+      <p>Facial enhancement focused on naturalness and precision.</p>
     </div>
     <div class="proc-grid">
       <div class="pcard reveal d1">
@@ -442,77 +435,77 @@
           <div class="ph"><span class="mono">Tx</span><small>Add photo</small></div>
           <img src="images/proc-toxina.jpg" alt="Botulinum Toxin" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">01</div><div class="prod">Dysport · Letybo · Xeomin · Botox</div><h3>Botulinum Toxin</h3><p>Personalized applications for the upper third, full face, gummy smile, masseter/bruxism and other facial strategies.</p></div>
+        <div class="pbody"><div class="num">01</div><div class="prod">Dysport · Letybo · Xeomin · Botox</div><h3>Botulinum Toxin</h3></div>
       </div>
       <div class="pcard reveal d2">
         <div class="pimg">
           <div class="ph"><span class="mono">Lb</span><small>Add photo</small></div>
           <img src="images/proc-labial.jpg" alt="Lip Filler" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">02</div><h3>Lip Filler</h3><p>Definition, proportion and refinement of the lips in a personalized way.</p></div>
+        <div class="pbody"><div class="num">02</div><h3>Lip Filler</h3></div>
       </div>
       <div class="pcard reveal d3">
         <div class="pimg">
           <div class="ph"><span class="mono">Uc</span><small>Add photo</small></div>
           <img src="images/proc-olheiras.jpg" alt="Under-eye Filler" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">03</div><h3>Under-eye (Tear Trough) Filler</h3><p>Correction of volume loss and improvement of the tired appearance of the area.</p></div>
+        <div class="pbody"><div class="num">03</div><h3>Under-eye (Tear Trough) Filler</h3></div>
       </div>
       <div class="pcard reveal d4">
         <div class="pimg">
           <div class="ph"><span class="mono">Ct</span><small>Add photo</small></div>
           <img src="images/proc-contorno.jpg" alt="Facial Contouring" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">04</div><h3>Facial Contouring</h3><p>Refinement and definition of facial contours for greater balance, structure and proportion.</p></div>
+        <div class="pbody"><div class="num">04</div><h3>Facial Contouring</h3></div>
       </div>
       <div class="pcard reveal d1">
         <div class="pimg">
           <div class="ph"><span class="mono">Rh</span><small>Add photo</small></div>
           <img src="images/proc-rino.jpg" alt="Non-surgical Rhinoplasty" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">05</div><h3>Non-surgical Rhinoplasty</h3><p>Harmonization of the nasal profile without surgery through the use of hyaluronic acid.</p></div>
+        <div class="pbody"><div class="num">05</div><h3>Non-surgical Rhinoplasty</h3></div>
       </div>
       <div class="pcard reveal d2">
         <div class="pimg">
           <div class="ph"><span class="mono">Hm</span><small>Add photo</small></div>
           <img src="images/proc-masculina.jpg" alt="Male Facial Harmonization" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">06</div><h3>Male Facial Harmonization</h3><p>Individualized strategies to enhance masculine features with naturalness and precision.</p></div>
+        <div class="pbody"><div class="num">06</div><h3>Male Facial Harmonization</h3></div>
       </div>
       <div class="pcard reveal d3">
         <div class="pimg">
           <div class="ph"><span class="mono">Hf</span><small>Add photo</small></div>
           <img src="images/proc-feminina.jpg" alt="Female Facial Harmonization" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">07</div><h3>Female Facial Harmonization</h3><p>Personalized facial refinement focused on balance, lightness and proportion.</p></div>
+        <div class="pbody"><div class="num">07</div><h3>Female Facial Harmonization</h3></div>
       </div>
       <div class="pcard reveal d4">
         <div class="pimg">
           <div class="ph"><span class="mono">Cb</span><small>Add photo</small></div>
           <img src="images/proc-bio.jpg" alt="Collagen Biostimulators" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">08</div><div class="prod">Sculptra · Radiesse · Harmonyca</div><h3>Collagen Biostimulators</h3><p>Stimulation of natural collagen production to improve firmness, support and facial quality.</p></div>
+        <div class="pbody"><div class="num">08</div><div class="prod">Sculptra · Radiesse · Harmonyca</div><h3>Collagen Biostimulators</h3></div>
       </div>
       <div class="pcard reveal d1">
         <div class="pimg">
           <div class="ph"><span class="mono">Hy</span><small>Add photo</small></div>
           <img src="images/proc-remocao.jpg" alt="Filler Removal" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">09</div><h3>Filler Removal</h3><p>Procedure used to dissolve hyaluronic acid fillers (hyaluronidase).</p></div>
+        <div class="pbody"><div class="num">09</div><h3>Filler Removal</h3></div>
       </div>
       <div class="pcard reveal d2">
         <div class="pimg">
           <div class="ph"><span class="mono">Sk</span><small>Add photo</small></div>
           <img src="images/proc-skinbooster.jpg" alt="Skinbooster" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">10</div><h3>Skinbooster</h3><p>Deep skin hydration through hyaluronic acid or regenerative actives (PDRN, injectable collagen, NCTF, exosomes, etc.) to improve quality, glow and texture.</p></div>
+        <div class="pbody"><div class="num">10</div><h3>Skinbooster</h3></div>
       </div>
       <div class="pcard reveal d3">
         <div class="pimg">
           <div class="ph"><span class="mono">Cp</span><small>Add photo</small></div>
           <img src="images/proc-consulta.jpg" alt="Individualized Facial Consultation and Planning" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">11</div><h3>Individualized Facial Consultation &amp; Planning</h3><p>Detailed assessment to build a personalized facial treatment plan.</p></div>
+        <div class="pbody"><div class="num">11</div><h3>Individualized Facial Consultation &amp; Planning</h3></div>
       </div>
     </div>
     <!-- CTA -->
@@ -615,7 +608,7 @@
     <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
       <div class="eyebrow">Trusted by</div>
       <h2>What <em>patients</em> say.</h2>
-      <p style="margin-left:auto;margin-right:auto">Real testimonials from those who have visited Dr. Paulo Vitor's clinic.</p>
+      <p style="margin-left:auto;margin-right:auto">Real testimonials from those who have been treated by Dr. Paulo Vitor.</p>
     </div>
   </div>
   <div class="wrap">
@@ -654,7 +647,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <div>
             <b>Address</b>
-            <span>R. Eng. Enaldo Cravo Peixoto, 215, Room 207 · Tijuca, Rio de Janeiro, Brazil · ZIP 20540-106</span>
+            <span>Titanium Offices Tijuca · R. Eng. Enaldo Cravo Peixoto, 215, Room 207 · Tijuca, Rio de Janeiro, Brazil · ZIP 20540-106</span>
           </div>
         </li>
         <li>
@@ -674,8 +667,8 @@
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           <div>
-            <b>Hours</b>
-            <span>Monday to Friday · by appointment</span>
+            <b>Appointments</b>
+            <span>By appointment only</span>
           </div>
         </li>
       </ul>
