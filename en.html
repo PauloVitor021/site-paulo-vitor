@@ -153,7 +153,7 @@
 
   /* ---------- sobre ---------- */
   .sobre{padding:96px 0;background:linear-gradient(180deg,var(--bone),var(--paper))}
-  .sobre-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+  .sobre-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;max-width:860px}
   .sobre-img{position:relative}
   .sobre-img .frame{border-radius:18px 18px 130px 130px;overflow:hidden;aspect-ratio:549/789;box-shadow:0 36px 70px -34px rgba(0,0,0,.5)}
   .sobre-img .frame img{width:100%;height:100%;object-fit:cover;object-position:top center}
@@ -368,7 +368,7 @@
 <section class="hero" id="topo">
   <span class="ghost-word">beauty</span>
   <div class="wrap hero-grid">
-    <img class="hero-logo-img reveal" src="images/logo.png" alt="Dr. Paulo Vitor Rocha — Facial Harmonization" />
+    <img class="hero-logo-img reveal" src="images/monograma.png" onerror="this.onerror=null;this.src='images/logo.png'" alt="BYPV — Dr. Paulo Vitor Rocha" />
     <div class="hero-portrait reveal d2">
       <div class="frame">
         <div class="hero-ph"><span class="mono">PV</span><small>Dr. Paulo Vitor's photo<br>save as images/hero.jpg</small></div>
@@ -388,11 +388,6 @@
 <!-- ===================== SOBRE ===================== -->
 <section class="sobre" id="sobre">
   <div class="wrap sobre-grid">
-    <div class="sobre-img reveal">
-      <div class="frame">
-        <img src="images/about.jpg" alt="Dr. Paulo Vitor during a treatment" loading="lazy" />
-      </div>
-    </div>
     <div class="sobre-copy">
       <div class="eyebrow reveal">About the specialist</div>
       <h2 class="reveal d1">Technique and <em>good sense</em> in every detail.</h2>
@@ -400,20 +395,24 @@
       <p class="reveal d2">Every appointment starts with a detailed assessment — because a beautiful result is born from a personalized treatment plan, not from ready-made formulas.</p>
       <ul class="creds reveal d3">
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Dental Surgeon (DDS)
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg>
+          Dental Surgeon from Universidade de Volta Redonda (UniFOA)
         </li>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Specialist in Facial Harmonization — UFRJ (Federal University of Rio de Janeiro)
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg>
+          Specialist in Orofacial Harmonization from the Federal University of Rio de Janeiro (UFRJ)
         </li>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Specialist in Dental Prosthetics and Restorative Dentistry — São Leopoldo Mandic
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg>
+          Specialist in Dental Prosthetics and Restorative Dentistry from São Leopoldo Mandic
         </li>
         <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Facial Harmonization Teaching Assistant — UFRJ
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg>
+          Orofacial Harmonization Teaching Assistant at the Federal University of Rio de Janeiro (UFRJ)
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg>
+          <a class="js-lattes" href="#" target="_blank" rel="noopener">Lattes Platform</a>
         </li>
       </ul>
       <a class="btn btn--outline js-wpp reveal d4" href="#">Talk to Dr. Paulo Vitor</a>
@@ -425,9 +424,8 @@
 <section class="proc" id="procedimentos">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow on-dark">What we do</div>
       <h2>Procedures to <em>enhance</em> you.</h2>
-      <p>Facial enhancement focused on naturalness and precision.</p>
+      <p>Facial enhancement focused on naturalness and precision, in the BYPV style.</p>
     </div>
     <div class="proc-grid">
       <div class="pcard reveal d1">
@@ -687,7 +685,7 @@
 
   <div class="wrap">
     <footer>
-      <small>© <span id="yr"></span> Dr. Paulo Vitor · CRO-RJ 53790 · Facial Harmonization · All rights reserved.</small>
+      <small>© <span id="yr"></span> Dr. Paulo Vitor Rocha • Dental surgeon specialized in Orofacial Harmonization • CRO/RJ 53790 • all rights reserved.</small>
       <div class="socials">
         <a class="js-ig" href="#" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
