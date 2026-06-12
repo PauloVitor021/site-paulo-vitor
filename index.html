@@ -122,7 +122,15 @@
     box-shadow:0 40px 80px -36px rgba(0,0,0,.55);
     aspect-ratio:573/788;background:var(--ink);
   }
-  .hero-portrait .frame img{width:100%;height:100%;object-fit:cover;object-position:top center}
+  .hero-portrait .frame img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:top center}
+  /* text logo (hero) */
+  .hero-logo{display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+  .hero-logo .hl-name{font-size:clamp(1.7rem,4.2vw,2.9rem);font-weight:700;letter-spacing:.16em;text-transform:uppercase;line-height:1.15;color:var(--ink)}
+  .hero-logo .hl-sub{font-size:clamp(.68rem,1.5vw,.92rem);font-weight:300;letter-spacing:.42em;text-transform:uppercase;color:var(--muted)}
+  /* hero photo placeholder (until images/hero.jpg is added) */
+  .hero-ph{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:radial-gradient(120% 120% at 50% 0%,rgba(255,255,255,.06),rgba(18,18,18,0)),var(--ink-90);color:var(--gold);text-align:center;padding:24px}
+  .hero-ph .mono{font-weight:300;font-size:2.6rem;letter-spacing:.1em}
+  .hero-ph small{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,250,.5);line-height:1.6}
   .hero-portrait::after{
     content:"";position:absolute;inset:-18px -18px 30px;border:1px solid var(--gold);
     border-radius:240px 240px 26px 26px;z-index:-1;opacity:.5;
@@ -364,9 +372,10 @@
   <span class="ghost-word">beleza</span>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="hero-kicker reveal"><span class="rule"></span><span class="eyebrow">Rio de Janeiro · Harmonização Orofacial</span></div>
-      <h1 class="reveal d1">A sua beleza, <em>realçada</em> com naturalidade e técnica.</h1>
-      <p class="lead reveal d2">Preenchimento labial e harmonização facial pensados para valorizar os seus traços — sem exageros, com segurança e um olhar artístico para o resultado.</p>
+      <div class="hero-logo reveal">
+        <span class="hl-name">Dr. Paulo Vitor Rocha</span>
+        <span class="hl-sub">Harmonização Facial</span>
+      </div>
       <div class="hero-cta reveal d3">
         <a class="btn btn--gold js-wpp" href="#">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.045z"/></svg>
@@ -374,15 +383,11 @@
         </a>
         <a class="btn btn--outline" href="#resultados">Ver resultados</a>
       </div>
-      <div class="hero-stats reveal d4">
-        <div><div class="n">+5 anos</div><div class="l">de experiência</div></div>
-        <div><div class="n">+1.000</div><div class="l">procedimentos</div></div>
-        <div><div class="n">100%</div><div class="l">resultados naturais</div></div>
-      </div>
     </div>
     <div class="hero-portrait reveal d2">
       <div class="frame">
-        <img src="images/hero.jpg" alt="Dr. Paulo Vitor" loading="eager" />
+        <div class="hero-ph"><span class="mono">PV</span><small>Foto do Dr. Paulo Vitor<br>salve como images/hero.jpg</small></div>
+        <img src="images/hero.jpg" alt="Dr. Paulo Vitor" loading="eager" onerror="this.style.display='none'" />
       </div>
       <div class="badge">
         <b>Dr. Paulo Vitor</b>
@@ -396,7 +401,6 @@
 <section class="sobre" id="sobre">
   <div class="wrap sobre-grid">
     <div class="sobre-img reveal">
-      <span class="tag">By Paulo Vitor</span>
       <div class="frame">
         <img src="images/about.jpg" alt="Dr. Paulo Vitor durante atendimento" loading="lazy" />
       </div>
@@ -496,10 +500,10 @@
       </div>
       <div class="pcard reveal d1">
         <div class="pimg">
-          <div class="ph"><span class="mono">Hi</span><small>Adicionar foto</small></div>
-          <img src="images/proc-hialuronidase.jpg" alt="Hialuronidase" loading="lazy" onerror="this.style.display='none'" />
+          <div class="ph"><span class="mono">Rp</span><small>Adicionar foto</small></div>
+          <img src="images/proc-remocao.jpg" alt="Remoção de Procedimento" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="pbody"><div class="num">09</div><h3>Hialuronidase</h3><p>Procedimento utilizado para remoção de preenchimentos com ácido hialurônico.</p></div>
+        <div class="pbody"><div class="num">09</div><h3>Remoção de Procedimento</h3><p>Procedimento utilizado para remoção de preenchimentos com ácido hialurônico (hialuronidase).</p></div>
       </div>
       <div class="pcard reveal d2">
         <div class="pimg">
@@ -588,10 +592,10 @@
         <div class="cap"><div class="t">Bioestimuladores de Colágeno</div><div class="s">Antes &amp; Depois</div></div>
       </div>
       <div class="rcard">
-        <span class="ab">Hialuronidase</span>
-        <div class="rph"><span class="mono">Hi</span><small>Adicionar antes &amp; depois</small></div>
-        <img src="images/resultado-hialuronidase.jpg" alt="Resultado de hialuronidase — antes e depois" loading="lazy" onerror="this.style.display='none'" />
-        <div class="cap"><div class="t">Hialuronidase</div><div class="s">Antes &amp; Depois</div></div>
+        <span class="ab">Remoção</span>
+        <div class="rph"><span class="mono">Rp</span><small>Adicionar antes &amp; depois</small></div>
+        <img src="images/resultado-remocao.jpg" alt="Resultado de remoção de procedimento — antes e depois" loading="lazy" onerror="this.style.display='none'" />
+        <div class="cap"><div class="t">Remoção de Procedimento</div><div class="s">Antes &amp; Depois</div></div>
       </div>
       <div class="rcard">
         <span class="ab">Skinbooster</span>
